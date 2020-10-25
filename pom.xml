@@ -83,6 +83,13 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+		  <groupId>com.cmeza</groupId>
+		  <artifactId>spring-data-generator</artifactId>
+		  <version>1.1.8</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -116,6 +123,25 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<plugin>
+				<groupId>com.cmeza</groupId>
+				<artifactId>spring-data-generator</artifactId>
+				<version>1.1.8</version>
+				<configuration>
+					<entity-package>
+					    <param>com.cardtransaction.transaction.model</param>
+					</entity-package>
+					<repository-package>com.cardtransaction.transaction.repository</repository-package>
+					<repository-postfix>Repository</repository-postfix>					
+					<only-annotations>false</only-annotations>
+					<overwrite>false</overwrite>
+					<additional-extends>
+	                    <param>org.springframework.data.querydsl.QuerydslPredicateExecutor</param>
+	                </additional-extends>
+				</configuration>
+			</plugin>
+			
 		</plugins>
 	</build>
 
