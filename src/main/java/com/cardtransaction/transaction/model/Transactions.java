@@ -1,7 +1,7 @@
 package com.cardtransaction.transaction.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -51,7 +51,7 @@ public class Transactions implements Serializable {
 	private OperationsTypes operationsTypes;
 	
 	@Column(name = "AMOUNT", nullable = false)
-	private double amount;
+	private Double amount;
 		
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "EVENT_DATE")

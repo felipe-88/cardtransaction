@@ -1,6 +1,7 @@
 package com.cardtransaction.transaction.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -34,4 +36,7 @@ public class Accounts implements Serializable {
 	
 	@Column(name = "DOCUMENT_NUMBER", nullable = false, unique = true)
 	private String documentNumber;
+	
+	@OneToMany(mappedBy = "accounts")
+	private List<Transactions> transactionsList;
 }
