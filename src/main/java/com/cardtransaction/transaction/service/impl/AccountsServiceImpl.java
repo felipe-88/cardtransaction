@@ -1,11 +1,13 @@
 package com.cardtransaction.transaction.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.cardtransaction.transaction.model.Accounts;
 import com.cardtransaction.transaction.repository.AccountsRepository;
 import com.cardtransaction.transaction.service.AccountsService;
 
+@Component
 public class AccountsServiceImpl implements AccountsService {
 
 	@Autowired

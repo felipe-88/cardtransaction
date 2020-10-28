@@ -46,7 +46,7 @@ public class Transactions implements Serializable {
 	@JoinColumn(name = "ACCOUNT_ID")
 	private Accounts accounts;
 	
-	@Column(name = "OPERATION_TYPE_ID", nullable = false)
+	@Column(name = "OPERATION_TYPE", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private OperationsTypes operationsTypes;
 	

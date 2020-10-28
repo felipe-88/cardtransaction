@@ -4,6 +4,6 @@ public enum OperationsTypes {
 	
 	COMPRA_A_VISTA,
 	COMPRA_PARCELADA,
-	PAGAMENTO,
-	SAQUE
+	SAQUE,
+	PAGAMENTO
 }
