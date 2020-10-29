@@ -14,6 +14,9 @@ import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,11 +35,14 @@ public class Accounts implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ACCOUNT_ID", nullable = false, unique = true)
+	@JsonAlias("account_id")
 	private Integer accountId;
 	
 	@Column(name = "DOCUMENT_NUMBER", nullable = false, unique = true)
+	@JsonAlias("document_number")
 	private String documentNumber;
 	
 	@OneToMany(mappedBy = "accounts")
+	@JsonIgnore
 	private List<Transactions> transactionsList;
 }

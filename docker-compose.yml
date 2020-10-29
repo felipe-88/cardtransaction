@@ -1,0 +1,18 @@
+version: "3"
+services:
+  card-transaction:
+    image: card-transaction
+    ports:
+      - "8080:8080"    
+    depends_on:
+      - mysqldb
+    links:
+     - mysqldb
+ 
+  mysqldb:
+    image: mysql:8    
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=pysmo  
+    expose:
+      - '3306'

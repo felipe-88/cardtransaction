@@ -21,6 +21,9 @@ import javax.persistence.TemporalType;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.cardtransaction.transaction.enums.OperationsTypes;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -40,21 +43,26 @@ public class Transactions implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "TRANSACTION_ID", nullable = false, unique = true)
+	@JsonIgnore
 	private Integer transactionId;
 	
-	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER, targetEntity = Accounts.class)
 	@JoinColumn(name = "ACCOUNT_ID")
+	@JsonAlias("account")	
 	private Accounts accounts;
 	
-	@Column(name = "OPERATION_TYPE", nullable = false)
-	@Enumerated(EnumType.STRING)
+	@Column(name = "OPERATION_TYPE_ID", nullable = false)
+	@Enumerated(EnumType.ORDINAL)
+	@JsonAlias("operation_type_id")
 	private OperationsTypes operationsTypes;
 	
 	@Column(name = "AMOUNT", nullable = false)
+	@JsonAlias("amount")
 	private Double amount;
 		
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "EVENT_DATE")
+	@JsonIgnore
 	private Date eventDate;
 
 }

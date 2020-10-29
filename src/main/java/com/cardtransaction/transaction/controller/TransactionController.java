@@ -34,8 +34,8 @@ public class TransactionController {
 		return new ResponseEntity<Accounts>(accountCreated, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/accounts/{accountId}")
-	public ResponseEntity<Accounts> readAccounts(@PathVariable(value = "accountId") Integer accountId) {
+	@GetMapping("/accounts/{account_id}")
+	public ResponseEntity<Accounts> readAccounts(@PathVariable(value = "account_id") Integer accountId) {
 		Accounts account = accountsService.findById(accountId);
 		return new ResponseEntity<Accounts>(account, HttpStatus.OK);
 	}
